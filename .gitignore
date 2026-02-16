@@ -1,0 +1,4 @@
+dist
+node_modules
+src/database/daily-diet.db
+.env
