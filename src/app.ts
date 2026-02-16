@@ -1,9 +1,9 @@
 import fastify from "fastify";
 import fastifyJWT from "@fastify/jwt";
 import { serializerCompiler, validatorCompiler, ZodTypeProvider } from "fastify-type-provider-zod";
-import { env } from "@/config/env.js";
-import { userRoutes } from "@/routes/user/user.routes.js";
-import { authRoutes } from "./routes/auth/auth.routes.js";
+import { env } from "@/config/env.ts";
+import { userRoutes } from "@/routes/user/user.routes.ts";
+import { authRoutes } from "./routes/auth/auth.routes.ts";
 
 export const app = fastify({
 	logger: true

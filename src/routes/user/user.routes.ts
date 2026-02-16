@@ -1,15 +1,11 @@
 import type { FastifyInstance } from "fastify";
-import { db } from "@/config/database.js";
-import { CreateUserDto, CreateUserSchema } from "./dto/create-user.js";
+import { db } from "@/config/database.ts";
+import { CreateUserDto, CreateUserSchema } from "./dto/create-user.ts";
 import bcrypt from "bcrypt";
-import { isAuthenticated } from "@/middlewares/is-authenticated.js";
+import { isAuthenticated } from "@/middlewares/is-authenticated.ts";
 
 export async function userRoutes(app: FastifyInstance) {
-	app.addHook("preHandler", async (request, reply) => {
-		await isAuthenticated(request, reply);
-	});
-
-	app.get("/", async (_, reply) => {
+	app.get("/", { preHandler: [isAuthenticated] }, async (_, reply) => {
 		try {
 			const users = await db("user").select("*");
 			return reply.send(users);

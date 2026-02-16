@@ -1,4 +1,6 @@
 dist
 node_modules
 src/database/daily-diet.db
+src/database/test.db
 .env
+.env.test

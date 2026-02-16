@@ -1,6 +1,6 @@
 import { FastifyInstance } from "fastify";
-import { LoginDto, LoginSchema } from "./dto/login.js";
-import { db } from "@/config/database.js";
+import { LoginDto, LoginSchema } from "./dto/login.ts";
+import { db } from "@/config/database.ts";
 import bcrypt from "bcrypt";
 
 export async function authRoutes(app: FastifyInstance) {
