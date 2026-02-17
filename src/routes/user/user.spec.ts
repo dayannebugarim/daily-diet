@@ -3,6 +3,12 @@ import { app } from "@/app.ts";
 import request from "supertest";
 import { execSync } from "node:child_process";
 
+const userData = {
+	name: "John Doe",
+	email: "john.doe@example.com",
+	password: "password123"
+};
+
 describe("User Routes", () => {
 	beforeAll(async () => {
 		await app.ready();
@@ -18,12 +24,6 @@ describe("User Routes", () => {
 	});
 
 	it("should be able to create a new user", async () => {
-		const userData = {
-			name: "John Doe",
-			email: "john.doe@example.com",
-			password: "password123"
-		};
-
 		const createUserResponse = await request(app.server)
 			.post("/user")
 			.send(userData);
@@ -32,12 +32,6 @@ describe("User Routes", () => {
 	});
 
 	it("should be able to list all users", async () => {
-		const userData = {
-			name: "John Doe",
-			email: "john.doe@example.com",
-			password: "password123"
-		};
-
 		await request(app.server)
 			.post("/user")
 			.send(userData);

@@ -4,6 +4,7 @@ import { serializerCompiler, validatorCompiler, ZodTypeProvider } from "fastify-
 import { env } from "@/config/env.ts";
 import { userRoutes } from "@/routes/user/user.routes.ts";
 import { authRoutes } from "./routes/auth/auth.routes.ts";
+import { mealRoutes } from "./routes/meal/meal.routes.ts";
 
 export const app = fastify({
 	logger: true
@@ -18,3 +19,4 @@ await app.register(fastifyJWT, {
 
 app.register(authRoutes, { prefix: "/auth" });
 app.register(userRoutes, { prefix: "/user" });
+app.register(mealRoutes, { prefix: "/meal" });
